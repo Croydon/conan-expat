@@ -1,17 +1,17 @@
 from conans import ConanFile, CMake, tools
 
 class ExpatConan(ConanFile):
-    """ This recipe requires conan 0.25.1 at least"""
-
     name = "Expat"
     version = "2.2.5"
     description = "Recipe for Expat library"
-    license = "MIT/X Consortium license. Check file COPYING of the library"
+    topics = ("conan", "expat", "xml", "parsing")
     url = "https://github.com/Pix4D/conan-expat"
-    source_url = "https://github.com/libexpat/libexpat"
+    homepage = "https://github.com/piponazo/conan-expat"
+    author = "piponazo"
+    license = "MIT"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
-    default_options = "shared=False"
+    default_options = {'shared': 'False'}
     generators = "cmake"
     exports_sources = ['FindExpat.cmake', 'patches/*']
 
@@ -47,3 +47,4 @@ class ExpatConan(ConanFile):
 
     def configure(self):
         del self.settings.compiler.libcxx
+        del self.settings.compiler.cppstd
